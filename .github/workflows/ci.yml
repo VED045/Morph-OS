@@ -31,22 +31,24 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - uses: reactivecircus/android-emulator-runner@v2
+      - name: Android 36 build, lint and instrumentation
+        if: matrix.api-level == 36
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           target: default
           disable-animations: true
-          # This action provisions the exact emulator SDK. Keeping build, lint and
-          # instrumentation together avoids a second SDK setup path that had begun
-          # failing before Gradle ran on ubuntu-latest.
-          script: >-
-            chmod +x gradlew &&
-            if [ "${{ matrix.api-level }}" = "36" ]; then
-              ./gradlew testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest connectedDebugAndroidTest;
-            else
-              ./gradlew connectedDebugAndroidTest;
-            fi
+          script: chmod +x gradlew && ./gradlew testDebugUnitTest lintDebug assembleDebug assembleDebugAndroidTest connectedDebugAndroidTest
+      - name: Android 29 instrumentation
+        if: matrix.api-level == 29
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          target: default
+          disable-animations: true
+          script: chmod +x gradlew && ./gradlew connectedDebugAndroidTest
       - name: Upload debug APK
         if: matrix.api-level == 36
         uses: actions/upload-artifact@v4
