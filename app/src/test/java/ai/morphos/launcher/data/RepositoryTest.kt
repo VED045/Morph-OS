@@ -15,6 +15,45 @@ import org.robolectric.annotation.Config
 @Config(sdk = [29], application = android.app.Application::class)
 class RepositoryTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
+    @Test fun workspaceMigrationMovesResizeAndDockSurviveRestart() = runBlocking<Unit> {
+        val repo = PreferencesRepository(context); repo.reset()
+        repo.ensureWorkspace((0..19).map { "app$it" })
+        val initial = repo.preferences.first()
+        assertEquals(4, initial.dockApps.size)
+        assertEquals(3, initial.homePages)
+        assertTrue(initial.homeItems!!.filter { it.kind == HomeKind.WIDGET }.all { it.page == 1 })
+        repo.theme("nothing")
+        val movedTheme = repo.preferences.first()
+        assertTrue(movedTheme.homeItems!!.any { it.kind == HomeKind.WIDGET && it.page == 0 })
+        repo.page(true, 0)
+        val item = movedTheme.homeItems!!.first { it.kind == HomeKind.APP }
+        repo.moveHome(item.key, 3, 0, 0)
+        repo.theme("oxygen")
+        assertEquals(3, repo.preferences.first().homeItems!!.first { it.key == item.key }.page)
+        assertTrue(runCatching { repo.page(false, 3) }.isFailure)
+        repo.removeHome(item.key); repo.page(false, 3)
+        repo.dock("app0")
+        assertEquals(3, PreferencesRepository(context).preferences.first().dockApps.size)
+        repo.icons("monochrome")
+        assertEquals("monochrome", PreferencesRepository(context).preferences.first().iconTreatment)
+        repo.reset()
+    }
+    @Test fun explicitIconProposalAndHomeRemovalUndoTogether() = runBlocking<Unit> {
+        val repo = PreferencesRepository(context); repo.reset(); repo.icons("original"); repo.ensureWorkspace((0..11).map { "app$it" })
+        val current = repo.preferences.first()
+        repo.apply(FallbackTheme.value.copy(schemaVersion = 2, monochromeIcons = true), current.revision, "theme")
+        assertEquals("theme", repo.preferences.first().iconTreatment)
+        repo.travel(true)
+        assertEquals("original", repo.preferences.first().iconTreatment)
+        val app = repo.preferences.first().homeItems!!.first { it.kind == HomeKind.APP }
+        repo.removeHome(app.key)
+        assertFalse(repo.preferences.first().homeItems!!.any { it.key == app.key })
+        repo.travel(true)
+        assertTrue(repo.preferences.first().homeItems!!.any { it.key == app.key })
+        assertTrue(runCatching { repo.resizeHome(app.key, 2, 1) }.isFailure)
+        assertTrue(repo.preferences.first().homeItems!!.any { it.key == app.key && it.width == 1 })
+        repo.reset()
+    }
     @Test fun personalChoiceHistoryIsPersistedAndCanBeDeleted() = runBlocking<Unit> {
         val repo = PersonalRepository(context); repo.clear()
         repo.record("stable-lookup", "contact", 12345)

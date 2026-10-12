@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ai.morphos.launcher.data.ImagePersonalizerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-12T10:01:50.686Z" hostname="local-test-host" time="3.089">
+  <properties/>
+  <testcase name="invalidImageIsRejected" classname="ai.morphos.launcher.data.ImagePersonalizerTest" time="2.822"/>
+  <testcase name="imagePaletteProducesBoundedThemeWithRevisionAndNoModelClaim" classname="ai.morphos.launcher.data.ImagePersonalizerTest" time="0.24"/>
+  <testcase name="boundedStreamRejectsPayloadInsteadOfTruncating" classname="ai.morphos.launcher.data.ImagePersonalizerTest" time="0.027"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

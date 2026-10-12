@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     nebius_vision_verified: bool = False
     morphos_client_token: SecretStr = SecretStr('')
     requests_per_minute: int = 10
+    community_database: str = ''
+    community_invite: SecretStr = SecretStr('')
 
     @field_validator('nebius_base_url')
     @classmethod

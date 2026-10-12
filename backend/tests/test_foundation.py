@@ -9,7 +9,7 @@ from morphos.nebius import NebiusCatalog
 
 def test_offline_health_and_explicit_capabilities():
     client = TestClient(create_app(Settings(_env_file=None)))
-    assert client.get('/health').json() == {'status':'ok','version':'0.2.0'}
+    assert client.get('/health').json() == {'status':'ok','version':'0.4.0'}
     result = client.get('/capabilities').json()
     assert result['inference_enabled'] is False
     assert result['vision_verified'] is False

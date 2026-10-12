@@ -12,43 +12,46 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
 [workspace]\app\build.gradle.kts:32: Warning: A newer version of androidx.compose:compose-bom than 2025.08.00 is available: 2026.09.00 [GradleDependency]
     implementation(platform("androidx.compose:compose-bom:2025.08.00"))
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:38: Warning: A newer version of androidx.activity:activity-compose than 1.10.1 is available: 1.13.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:37: Warning: A newer version of com.google.ai.edge.litertlm:litertlm-android than 0.13.1 is available: 0.18.0 [GradleDependency]
+    implementation("com.google.ai.edge.litertlm:litertlm-android:0.13.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[workspace]\app\build.gradle.kts:40: Warning: A newer version of androidx.activity:activity-compose than 1.10.1 is available: 1.13.0 [GradleDependency]
     implementation("androidx.activity:activity-compose:1.10.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:39: Warning: A newer version of androidx.core:core-ktx than 1.16.0 is available: 1.19.1 [GradleDependency]
+[workspace]\app\build.gradle.kts:41: Warning: A newer version of androidx.core:core-ktx than 1.16.0 is available: 1.19.1 [GradleDependency]
     implementation("androidx.core:core-ktx:1.16.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:40: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-compose than 2.9.2 is available: 2.11.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:42: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-compose than 2.9.2 is available: 2.11.0 [GradleDependency]
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:41: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.9.2 is available: 2.11.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:43: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.9.2 is available: 2.11.0 [GradleDependency]
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:42: Warning: A newer version of androidx.datastore:datastore-preferences than 1.1.7 is available: 1.2.1 [GradleDependency]
+[workspace]\app\build.gradle.kts:44: Warning: A newer version of androidx.datastore:datastore-preferences than 1.1.7 is available: 1.2.1 [GradleDependency]
     implementation("androidx.datastore:datastore-preferences:1.1.7")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:43: Warning: A newer version of androidx.room:room-runtime than 2.7.2 is available: 2.8.5 [GradleDependency]
+[workspace]\app\build.gradle.kts:45: Warning: A newer version of androidx.room:room-runtime than 2.7.2 is available: 2.8.5 [GradleDependency]
     implementation("androidx.room:room-runtime:2.7.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:44: Warning: A newer version of androidx.room:room-ktx than 2.7.2 is available: 2.8.5 [GradleDependency]
+[workspace]\app\build.gradle.kts:46: Warning: A newer version of androidx.room:room-ktx than 2.7.2 is available: 2.8.5 [GradleDependency]
     implementation("androidx.room:room-ktx:2.7.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:45: Warning: A newer version of androidx.work:work-runtime-ktx than 2.10.2 is available: 2.12.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:47: Warning: A newer version of androidx.work:work-runtime-ktx than 2.10.2 is available: 2.12.0 [GradleDependency]
     implementation("androidx.work:work-runtime-ktx:2.10.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:46: Warning: A newer version of androidx.room:room-compiler than 2.7.2 is available: 2.8.5 [GradleDependency]
+[workspace]\app\build.gradle.kts:48: Warning: A newer version of androidx.room:room-compiler than 2.7.2 is available: 2.8.5 [GradleDependency]
     kapt("androidx.room:room-compiler:2.7.2")
          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:56: Warning: A newer version of androidx.test:core than 1.6.1 is available: 1.7.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:58: Warning: A newer version of androidx.test:core than 1.6.1 is available: 1.7.0 [GradleDependency]
     testImplementation("androidx.test:core:1.6.1")
                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:57: Warning: A newer version of androidx.compose:compose-bom than 2025.08.00 is available: 2026.09.00 [GradleDependency]
+[workspace]\app\build.gradle.kts:59: Warning: A newer version of androidx.compose:compose-bom than 2025.08.00 is available: 2026.09.00 [GradleDependency]
     androidTestImplementation(platform("androidx.compose:compose-bom:2025.08.00"))
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:59: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:61: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:60: Warning: A newer version of androidx.test:runner than 1.6.2 is available: 1.7.0 [GradleDependency]
+[workspace]\app\build.gradle.kts:62: Warning: A newer version of androidx.test:runner than 1.6.2 is available: 1.7.0 [GradleDependency]
     androidTestImplementation("androidx.test:runner:1.6.2")
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -59,28 +62,28 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
    However, you may simply not be aware that a more recent version is
    available, and that is what this lint check helps find.
 
-[workspace]\app\build.gradle.kts:47: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-serialization-json than 1.8.1 is available: 1.11.0 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:49: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-serialization-json than 1.8.1 is available: 1.11.0 [NewerVersionAvailable]
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:48: Warning: A newer version of com.squareup.retrofit2:retrofit than 2.11.0 is available: 3.0.0 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:50: Warning: A newer version of com.squareup.retrofit2:retrofit than 2.11.0 is available: 3.0.0 [NewerVersionAvailable]
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:49: Warning: A newer version of com.squareup.okhttp3:okhttp than 4.12.0 is available: 5.5.0 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:51: Warning: A newer version of com.squareup.okhttp3:okhttp than 4.12.0 is available: 5.5.0 [NewerVersionAvailable]
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:50: Warning: A newer version of com.squareup.retrofit2:converter-kotlinx-serialization than 2.11.0 is available: 3.0.0 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:52: Warning: A newer version of com.squareup.retrofit2:converter-kotlinx-serialization than 2.11.0 is available: 3.0.0 [NewerVersionAvailable]
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:2.11.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:51: Warning: A newer version of com.google.dagger:hilt-android than 2.56.2 is available: 2.60.1 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:53: Warning: A newer version of com.google.dagger:hilt-android than 2.56.2 is available: 2.60.1 [NewerVersionAvailable]
     implementation("com.google.dagger:hilt-android:2.56.2")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:52: Warning: A newer version of com.google.dagger:hilt-compiler than 2.56.2 is available: 2.60.1 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:54: Warning: A newer version of com.google.dagger:hilt-compiler than 2.56.2 is available: 2.60.1 [NewerVersionAvailable]
     kapt("com.google.dagger:hilt-compiler:2.56.2")
          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:54: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-test than 1.10.2 is available: 1.11.0 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:56: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-test than 1.10.2 is available: 1.11.0 [NewerVersionAvailable]
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[workspace]\app\build.gradle.kts:55: Warning: A newer version of org.robolectric:robolectric than 4.14.1 is available: 4.17 [NewerVersionAvailable]
+[workspace]\app\build.gradle.kts:57: Warning: A newer version of org.robolectric:robolectric than 4.14.1 is available: 4.17 [NewerVersionAvailable]
     testImplementation("org.robolectric:robolectric:4.14.1")
                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,7 +95,16 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
    MavenCentral dependency, and connects to the library every time, which
    makes it more flexible but also much slower.
 
-[workspace]\app\build.gradle.kts:46: Warning: This library supports using KSP instead of kapt, which greatly improves performance. Learn more: https://developer.android.com/studio/build/migrate-to-ksp [KaptUsageInsteadOfKsp]
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ClipboardSync.kt:79: Warning: Implementing a custom X509TrustManager is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android's default implementation. [CustomX509TrustManager]
+        val trust = object : X509TrustManager {
+                    ~~~~~~
+
+   Explanation for issues of type "CustomX509TrustManager":
+   This check looks for custom X509TrustManager implementations.
+
+   https://goo.gle/CustomX509TrustManager
+
+[workspace]\app\build.gradle.kts:48: Warning: This library supports using KSP instead of kapt, which greatly improves performance. Learn more: https://developer.android.com/studio/build/migrate-to-ksp [KaptUsageInsteadOfKsp]
     kapt("androidx.room:room-compiler:2.7.2")
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,18 +114,72 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
 
    https://developer.android.com/studio/build/migrate-to-ksp
 
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ClipboardSync.kt:180: Warning: Consider also using StorageManager#getAllocatableBytes and allocateBytes which will consider clearable cached data [UsableSpace]
+        while (true) { val count = input.read(buffer); if (count < 0) break; total += count; require(total <= maximum && folder.usableSpace > 33554432); output.write(buffer, 0, count) }
+                                                                                                                                ~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\PhoneInference.kt:40: Warning: Consider also using StorageManager#getAllocatableBytes and allocateBytes which will consider clearable cached data [UsableSpace]
+                    while (true) { ensureActive(); val n = input.read(buffer); if (n < 0) break; total += n; require(total <= 8589934592L && folder.usableSpace > 134217728L) { "Model exceeds size or available storage" }; output.write(buffer, 0, n) }
+                                                                                                                                                    ~~~~~~~~~~~
+
+   Explanation for issues of type "UsableSpace":
+   When you need to allocate disk space for large files, consider using the
+   new allocateBytes(FileDescriptor, long) API, which will automatically clear
+   cached files belonging to other apps (as needed) to meet your request.
+
+   When deciding if the device has enough disk space to hold your new data,
+   call getAllocatableBytes(UUID) instead of using getUsableSpace(), since the
+   former will consider any cached data that the system is willing to clear on
+   your behalf.
+
+   Note that these methods require API level 26. If your app is running on
+   older devices, you will probably need to use both APIs, conditionally
+   switching on Build.VERSION.SDK_INT. Lint only looks in the same compilation
+   unit to see if you are already using both APIs, so if it warns even though
+   you are already using the new API, consider moving the calls to the same
+   file or suppressing the warning.
+
 [workspace]\app\src\main\java\ai\morphos\launcher\data\AutomationWorker.kt:30: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
             if (match == null) { marker.edit().remove("last").apply(); return }
                                  ~~~~~~~~~~~~~
 [workspace]\app\src\main\java\ai\morphos\launcher\data\AutomationWorker.kt:36: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
             marker.edit().putString("last", signature).apply()
             ~~~~~~~~~~~~~
-[workspace]\app\src\main\java\ai\morphos\launcher\ui\ControlDashboard.kt:68: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ClipboardSync.kt:69: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+        prefs.edit().putString("address", url.toString().trimEnd('/')).putString("pin", pin).putString("iv", Base64.encodeToString(cipher.iv, Base64.NO_WRAP)).putString("secret", Base64.encodeToString(encrypted, Base64.NO_WRAP)).putLong("cursor", 0).apply()
+        ~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ClipboardSync.kt:72: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+    fun disconnect() { epoch++; enabled.value = false; prefs.edit().clear().apply(); status.value = "Disconnected"; clear() }
+                                                       ~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ClipboardSync.kt:170: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+            prefs.edit().putLong("cursor", id.toLong()).apply()
+            ~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\ui\ControlDashboard.kt:75: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
                         else runCatching { context.startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${context.packageName}"))) }
                                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ImagePersonalizer.kt:19: Warning: Use the KTX extension function Bitmap.scale instead? [UseKtx]
+            val sample = Bitmap.createScaledBitmap(bitmap, 48, 48, true)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\ImagePersonalizer.kt:21: Warning: Use the KTX extension function Bitmap.get instead? [UseKtx]
+            for (y in 0 until 48) for (x in 0 until 48) { val c = sample.getPixel(x, y); val key = ((Color.red(c) / 32) shl 6) or ((Color.green(c) / 32) shl 3) or (Color.blue(c) / 32); bins[key] = (bins[key] ?: 0) + 1 }
+                                                                  ~~~~~~~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\ui\LocalAiSetup.kt:49: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+            TextButton(onClick = { runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/VED045/Morph-OS/blob/main/docs/ON_DEVICE_AI.md"))) } }) { Text("Model guide") }
+                                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 [workspace]\app\src\main\java\ai\morphos\launcher\data\NotificationRepository.kt:29: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
         context.getSharedPreferences("notification_consent", Context.MODE_PRIVATE).edit().putBoolean("history", enabled).apply()
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\PhoneInference.kt:25: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+    fun visionEnabled(value: Boolean) { metadata.edit().putBoolean("vision", value).putBoolean("verified", false).apply() }
+                                        ~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\PhoneInference.kt:45: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+            metadata.edit().putString("name", display.take(100)).putBoolean("verified", false).apply()
+            ~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\PhoneInference.kt:48: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+    suspend fun delete() = lock.withLock { withContext(Dispatchers.IO) { model.delete(); metadata.edit().clear().apply() } }
+                                                                                         ~~~~~~~~~~~~~~~
+[workspace]\app\src\main\java\ai\morphos\launcher\data\PhoneInference.kt:82: Warning: Use the KTX extension function SharedPreferences.edit instead? [UseKtx]
+    suspend fun verify() { request("Return exactly {\"ready\":true}"); metadata.edit().putBoolean("verified", true).apply() }
+                                                                       ~~~~~~~~~~~~~~~
 [workspace]\app\src\main\java\ai\morphos\launcher\ui\SearchDashboard.kt:62: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
                             runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(result.contact.uri))); model.recordContact(result.contact) }
                                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -226,4 +292,4 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
 
    https://developer.android.com/guide/topics/resources/localization.html
 
-0 errors, 39 warnings
+0 errors, 53 warnings

@@ -29,8 +29,21 @@ import java.util.UUID
     val inferenceError by model.designError.collectAsStateWithLifecycle()
     LaunchedEffect(ai) { ai?.let { draft = it.widget; revision = it.revision } }
     Column(Modifier.fillMaxSize().padding(horizontal = 20.dp)) {
-        Header("Widget Studio", "Living components · Saved on your phone", style, back)
+        Header("Widgets", "Choose a widget or describe your own", style, back)
         Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("Widget gallery", color = style.text, fontSize = 20.sp)
+            listOf("Clock" to "Clock", "Battery" to "Circular battery", "Timer" to "20 minute timer", "Counter" to "Habit counter", "Birthdays" to "Birthday widget", "Calendar" to "Calendar meetings").chunked(2).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    row.forEach { (title, template) ->
+                        val sample = remember(template) { WidgetRegistry.local(template, "preview_" + title.lowercase())!! }
+                        Column(Modifier.weight(1f)) {
+                            WidgetCard(sample, style, {}, Modifier.fillMaxWidth().height(136.dp), fit = true, compact = true)
+                            TextButton(onClick = { model.addWidget(sample.copy(id = "w_" + UUID.randomUUID().toString().take(8)), state.preferences.revision) }, enabled = state.preferences.widgets.size < 8, modifier = Modifier.fillMaxWidth()) { Text("+ $title") }
+                        }
+                    }
+                }
+            }
+            Text("Create a widget", color = style.text, fontSize = 20.sp)
             OutlinedTextField(prompt, { prompt = it.take(1000) }, label = { Text("Describe a widget") }, placeholder = { Text("Create a hexagonal 20 minute timer") }, modifier = Modifier.fillMaxWidth().testTag("widget_prompt"))
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf("Star clock", "Circular battery", "20 minute timer", "Hexagonal birthday widget", "Calendar meetings", "Habit counter").forEach { text -> AssistChip(onClick = { prompt = text }, label = { Text(text) }) }
@@ -40,13 +53,15 @@ import java.util.UUID
                 error = if (draft == null) "Try clock, battery, timer, counter, birthdays or calendar. This offline parser supports those registered types." else null
             }, enabled = prompt.isNotBlank(), modifier = Modifier.testTag("preview_widget")) { Text("Preview offline widget") }
             Text("Offline templates support the registered types. Nemotron can select a type, shape and duration from your description. Generated widgets run only registered components and actions.", color = style.muted, fontSize = 11.sp)
-            TextButton(onClick = { connection = !connection }) { Text("Generate with Nemotron") }
+            TextButton(onClick = { connection = !connection }) { Text(if (state.preferences.localAiMode == "local") "Generate on this phone" else "Generate with AI") }
             if (connection) {
+                if (state.preferences.localAiMode != "local") {
                 OutlinedTextField(endpoint, { endpoint = it }, label = { Text("HTTPS backend URL") }, singleLine = true, modifier = Modifier.fillMaxWidth())
                 OutlinedTextField(token, { token = it }, label = { Text("MorphOS client token") }, visualTransformation = PasswordVisualTransformation(), singleLine = true, modifier = Modifier.fillMaxWidth())
-                Button(onClick = { model.proposeWidget(prompt, endpoint, token) }, enabled = prompt.isNotBlank() && !busy) { Text(if (busy) "Designing…" else "Preview Nemotron widget") }
+                }
+                Button(onClick = { model.proposeWidget(prompt, endpoint, token) }, enabled = prompt.isNotBlank() && !busy) { Text(if (busy) "Designing…" else "Preview AI widget") }
                 inferenceError?.let { Text(it, color = style.muted) }
-                ai?.let { Text("${it.explanation}\nNebius · ${it.model}", color = style.muted, fontSize = 12.sp) }
+                ai?.let { Text("${it.explanation}\n${if (it.source == "device") "On-device" else "Nebius"} · ${it.model}", color = style.muted, fontSize = 12.sp) }
             }
             error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             draft?.let { w ->
@@ -55,7 +70,7 @@ import java.util.UUID
                 if (state.preferences.widgets.size >= 8) Text("Home supports eight widgets. Remove one to add another.", color = style.muted)
             }
             Text("On your home", color = style.text, fontSize = 20.sp)
-            Text("Long press and drag vertically to reorder, or use the move buttons.", color = style.muted, fontSize = 12.sp)
+            Text("Edit home to place and resize widgets. These controls change style and the widget collection order.", color = style.muted, fontSize = 12.sp)
             state.preferences.widgets.forEach { w ->
                 Surface(color = style.surface, shape = style.shape) {
                     Column(Modifier.fillMaxWidth().padding(16.dp).pointerInput(w.id) {
@@ -73,6 +88,7 @@ import java.util.UUID
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             TextButton(onClick = { model.moveWidget(w.id, -1) }) { Text("Move up") }
                             TextButton(onClick = { model.moveWidget(w.id, 1) }) { Text("Move down") }
+                            if (state.preferences.homeItems?.none { it.kind == HomeKind.WIDGET && it.target == w.id } == true) TextButton(onClick = { model.restoreWidget(w.id) }) { Text("Place on home") }
                             TextButton(onClick = { model.removeWidget(w.id) }) { Text("Remove") }
                         }
                     }

@@ -1,4 +1,4 @@
-# Architecture — MorphOS 0.2.0
+# Architecture — MorphOS 0.3.0
 
 MorphOS is a native Kotlin/Compose Android launcher with an optional FastAPI design backend. It uses public Android APIs and declarative proposals. The current snapshot contains MVP slices across phases 0–7; scope and gaps are recorded in ROADMAP.md.
 
@@ -29,3 +29,15 @@ Image requests require a separately configured model and operator verification f
 ## Deployment boundaries
 
 The FastAPI service is a small single-process MVP with shared client-token authentication and an in-memory quota. Multi-tenant authentication, distributed quota, deployment validation and production signing remain backlog. The Dockerfile is included but untested. Provider credentials exist only in backend environment configuration. Android backups are disabled and cleartext traffic is rejected.
+
+## Editable workspace and native fallback
+
+Workspace is a bounded four-column, six-row grid on up to six pages. App cells are 1×1; widgets have validated rectangular spans. Collision checks reject widget overlap and allow app swaps. Home, dock, pages and icon treatment persist in atomic snapshots and undo history. Theme defaults can reseed untouched layouts; manual edits preserve placement. HorizontalPager and spring placement transitions respect reduced motion.
+
+PhoneInference imports a bounded user-selected CPU .litertlm file into private storage. It binds a non-exported Messenger service in :local_ai, runs LiteRT-LM 0.13.1 off the main thread and closes the engine after each request. CPU generation uses a 1024-token context, greedy sampling, response/time bounds and disabled tool execution. Native failure/disconnect returns an error without applying a design; the launcher retains its own process heap. The local adapter validates exact envelopes, allowed fields, types, ranges and current revision before returning a device-labeled preview. Local-only requests skip Nebius; backup mode tries the imported model after a remote exception. A runtime check establishes loading/generation, not model accuracy.
+
+Model files, model metadata and personal data are not sent to inference providers. The installed local model sees only the current declarative theme and user prompt, or a widget prompt. Text-only local inference does not handle screenshot uploads.
+
+## Connected spaces (0.4)
+
+CommunityClient uses normal HTTPS trust and validated ThemeSpec JSON against a SQLite-backed FastAPI community router. ClipboardSync uses a distinct paired TLS certificate and AES-GCM/Keystore credential storage against the Windows companion; payloads are bounded, file hashes verified and cached media exposed via scoped FileProvider grants. The companion uses Win32 clipboard formats and a loopback-only browser UI, with automatic capture paused initially. ImagePersonalizer extracts colors locally; PhoneInference can refine those palettes or use a compatible image model through the optional GPU vision backend.

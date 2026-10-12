@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ai.morphos.launcher.domain.LocalProposalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-12T10:01:56.512Z" hostname="local-test-host" time="0.006">
+  <properties/>
+  <testcase name="localPatchIsPreviewOnlyAndUsesCapturedRevision" classname="ai.morphos.launcher.domain.LocalProposalTest" time="0.001"/>
+  <testcase name="widgetOutputCannotChoosePersistentStateOrActions" classname="ai.morphos.launcher.domain.LocalProposalTest" time="0.004"/>
+  <testcase name="unsupportedOrUnsafeModelOutputIsRejected" classname="ai.morphos.launcher.domain.LocalProposalTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

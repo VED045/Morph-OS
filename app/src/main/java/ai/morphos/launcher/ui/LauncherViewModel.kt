@@ -29,6 +29,8 @@ class LauncherViewModel @Inject constructor(
     val appsRepository: AppsRepository,
     private val designer: DesignerClient,
     private val personal: PersonalRepository,
+    val phoneInference: PhoneInference,
+    val clipboard: ClipboardSync,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
     private val apps = MutableStateFlow<List<AppEntry>>(emptyList())
@@ -58,7 +60,8 @@ class LauncherViewModel @Inject constructor(
         if (designing.value) return
         viewModelScope.launch {
             designing.value = true; designError.value = null; widgetProposal.value = null
-            try { widgetProposal.value = designer.widget(endpoint, token, WidgetRequest(prompt, state.value.preferences.revision)) }
+            val request = WidgetRequest(prompt, state.value.preferences.revision)
+            try { widgetProposal.value = inference(state.value.preferences.localAiMode, { designer.widget(endpoint, token, request) }, { phoneInference.widget(request) }) }
             catch (e: kotlinx.coroutines.CancellationException) { throw e }
             catch (_: Exception) { designError.value = "Widget inference unavailable. Your existing widgets are unchanged." }
             finally { designing.value = false }
@@ -72,9 +75,18 @@ class LauncherViewModel @Inject constructor(
             designing.value = true; designError.value = null; proposal.value = null
             try {
                 val p = state.value.preferences; val current = currentTheme().copy(columns = p.columnsOverride ?: currentTheme().columns, drawer = p.drawerOverride ?: currentTheme().drawer)
-                proposal.value = designer.reference(endpoint, token, ImageDesignRequest(prompt.ifBlank { "Adapt this screenshot into my launcher" }, current, p.revision, image))
+                val request = ImageDesignRequest(prompt.ifBlank { "Adapt this image into my launcher" }, current, p.revision, image)
+                proposal.value = inference(p.localAiMode, { designer.reference(endpoint, token, request) }, {
+                    if (phoneInference.visionEnabled()) phoneInference.reference(request)
+                    else {
+                        val sampled = ImagePersonalizer.palette(image, p.revision)
+                        val base = DesignEngine.apply(current, sampled.patch)
+                        val refined = phoneInference.design(DesignRequest("Refine these image-derived colors and this request: ${request.prompt}", base, p.revision))
+                        refined.copy(patch = kotlinx.serialization.json.JsonObject(sampled.patch + refined.patch), explanation = "Image colors sampled locally; your text model refined the design. " + refined.explanation.take(350))
+                    }
+                })
             } catch (e: kotlinx.coroutines.CancellationException) { throw e }
-            catch (_: Exception) { designError.value = "No screenshot proposal. Configure and verify an image-capable model on the backend first. Your layout is unchanged." }
+            catch (_: Exception) { designError.value = "No validated image proposal. Check the selected model, or use Extract colors for a model-free local preview." }
             finally { designing.value = false }
         }
     }
@@ -87,18 +99,21 @@ class LauncherViewModel @Inject constructor(
             val effective = current.copy(columns = p.columnsOverride ?: current.columns, drawer = p.drawerOverride ?: current.drawer)
             try {
                 require(prompt.isNotBlank() && prompt.length <= 2000)
-                proposal.value = DesignEngine.local(prompt, p.revision) ?: designer.design(endpoint, token, DesignRequest(prompt, effective, p.revision, if (complex) "complex" else "fast"))
+                val request = DesignRequest(prompt, effective, p.revision, if (complex) "complex" else "fast")
+                proposal.value = DesignEngine.local(prompt, p.revision) ?: inference(p.localAiMode, { designer.design(endpoint, token, request) }, { phoneInference.design(request) })
                 DesignEngine.apply(effective, proposal.value!!.patch)
             } catch (e: kotlinx.coroutines.CancellationException) { throw e }
-            catch (_: Exception) { designError.value = "No validated proposal. Use an offline command or configure your HTTPS backend and client token. Your layout is unchanged." }
+            catch (_: Exception) { designError.value = "No validated proposal. Check your selected model or connection, or try an offline command. Your layout is unchanged." }
             finally { designing.value = false }
         }
     }
+    fun importTheme(theme: ThemeSpec, revision: Int) = save { prefs.apply(ThemeValidator.validate(theme), revision, "theme"); events.send("Community theme applied. Undo is available in Design studio.") }
+    fun paletteReference(image: String) { viewModelScope.launch { try { proposal.value = ImagePersonalizer.palette(image, state.value.preferences.revision) } catch (_: Exception) { designError.value = "Could not sample this image" } } }
     fun applyProposal() = save {
         val result = proposal.value ?: return@save
         val p = state.value.preferences
         val current = currentTheme().copy(columns = p.columnsOverride ?: currentTheme().columns, drawer = p.drawerOverride ?: currentTheme().drawer)
-        prefs.apply(DesignEngine.apply(current, result.patch), result.revision)
+        prefs.apply(DesignEngine.apply(current, result.patch), result.revision, if ("monochromeIcons" in result.patch) "theme" else null)
         proposal.value = null
         events.send("Design applied. Undo is available.")
     }
@@ -120,6 +135,22 @@ class LauncherViewModel @Inject constructor(
     fun updateWidget(widget: WidgetSpec) = save { prefs.updateWidget(widget) }
     fun moveWidget(id: String, direction: Int) = save { prefs.moveWidget(id, direction) }
     fun widgetAction(id: String) = save { prefs.widgetAction(id) }
+    fun ensureWorkspace() = save { if (state.value.ready && state.value.apps.isNotEmpty()) prefs.ensureWorkspace(state.value.apps.map { it.id }) }
+    fun homePage(add: Boolean, page: Int) = save { prefs.page(add, page) }
+    fun moveHome(key: String, page: Int, column: Int, row: Int) = save { prefs.moveHome(key, page, column, row) }
+    fun resizeHome(key: String, width: Int, height: Int) = save { prefs.resizeHome(key, width, height) }
+    fun restoreWidget(id: String) = save { prefs.restoreWidget(id) }
+    fun removeHome(key: String) = save { prefs.removeHome(key) }
+    fun dock(app: AppEntry) = save { prefs.dock(app.id) }
+    fun icons(value: String) = save { prefs.icons(value) }
+    fun reduceMotion(value: Boolean) = save { val p = state.value.preferences; prefs.apply(currentTheme().copy(schemaVersion = 2, reducedMotion = value, columns = p.columnsOverride ?: currentTheme().columns, drawer = p.drawerOverride ?: currentTheme().drawer), p.revision) }
+    fun localAiMode(value: String) = save { prefs.localAi(value) }
+    private suspend fun <T> inference(mode: String, remote: suspend () -> T, local: suspend () -> T): T {
+        if (mode == "local") return local()
+        try { return remote() }
+        catch (e: kotlinx.coroutines.CancellationException) { throw e }
+        catch (e: Exception) { if (mode == "fallback" && phoneInference.installed()) { events.send("Nebius unavailable. Trying your on-device model."); return local() }; throw e }
+    }
     private var refreshJob: Job? = null
     private val callback = object : LauncherApps.Callback() {
         override fun onPackageAdded(packageName: String, user: UserHandle) = changed()
@@ -151,7 +182,7 @@ class LauncherViewModel @Inject constructor(
     fun drawer(value: DrawerMode) = save { prefs.drawer(value) }
     fun columns(value: Int) = save { prefs.columns(value) }
     fun pin(app: AppEntry) = save {
-        if (app.id !in state.value.preferences.pinned && state.value.preferences.pinned.size >= 24) events.send("Home supports 24 pinned apps. Unpin one to make room.")
+        if (state.value.preferences.homeItems?.any { it.kind == HomeKind.APP && it.target == app.id } != true && state.value.preferences.pinned.size >= 24) events.send("Home supports 24 pinned apps. Unpin one to make room.")
         else prefs.togglePin(app.id)
     }
     fun reset() = save { prefs.reset() }

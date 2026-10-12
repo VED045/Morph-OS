@@ -19,12 +19,19 @@ import kotlin.math.*
         drawRect(style.bg)
         when (style.spec.wallpaperStyle) {
             "ORBS" -> {
+                if (style.oxygen) {
+                    drawRect(Brush.verticalGradient(listOf(Color(0xFF102D52), Color(0xFF4B658E), Color(0xFF946985), Color(0xFFC87457))))
+                    drawOval(Brush.linearGradient(listOf(Color.White.copy(alpha = .05f), Color.White.copy(alpha = .45f), Color.Transparent)), topLeft = Offset(-size.width * .3f, size.height * .23f), size = androidx.compose.ui.geometry.Size(size.width * 1.7f, size.height * .6f), style = androidx.compose.ui.graphics.drawscope.Stroke(2.dp.toPx()))
+                    drawOval(Color.White.copy(alpha = .13f), topLeft = Offset(size.width * .25f, -size.height * .2f), size = androidx.compose.ui.geometry.Size(size.width * 1.4f, size.height * .7f), style = androidx.compose.ui.graphics.drawscope.Stroke(1.dp.toPx()))
+                } else {
                 drawCircle(Brush.radialGradient(listOf(style.accent.copy(alpha = .45f), Color.Transparent), Offset(size.width * .9f, size.height * .15f), size.width * .95f), size.width, Offset(size.width * .9f, size.height * .15f))
                 drawCircle(Brush.radialGradient(listOf(Color(0xFF81D0CF).copy(alpha = .6f), Color.Transparent), Offset(-size.width * .1f, size.height * .56f), size.width), size.width, Offset(-size.width * .1f, size.height * .56f))
                 drawCircle(Brush.radialGradient(listOf(Color(0xFFDDC0A0).copy(alpha = .28f), Color.Transparent), Offset(size.width * .9f, size.height * .8f), size.width), size.width, Offset(size.width * .9f, size.height * .8f))
+                }
             }
             "AURORA" -> drawRect(Brush.linearGradient(listOf(style.accent.copy(alpha = .2f), Color.Transparent, style.accent.copy(alpha = .08f))))
             "GRAIN" -> {
+                if (style.nothing) drawRect(Brush.verticalGradient(listOf(style.bg, Color(0xFF607170).copy(alpha = .3f).compositeOver(style.bg), Color(0xFF263C32).copy(alpha = .45f).compositeOver(style.bg))))
                 val step = 7.dp.toPx()
                 for (x in 0..(size.width / step).toInt()) for (y in 0..(size.height / step).toInt()) {
                     drawCircle(style.text.copy(alpha = if ((x * 7 + y * 11) % 5 == 0) .07f else .02f), .5.dp.toPx(), Offset(x * step, y * step))

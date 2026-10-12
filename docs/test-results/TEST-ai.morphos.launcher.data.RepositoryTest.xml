@@ -1,43 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ai.morphos.launcher.data.RepositoryTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-12T05:53:27.469Z" hostname="local-test-host" time="3.938">
+<testsuite name="ai.morphos.launcher.data.RepositoryTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-12T10:01:53.787Z" hostname="local-test-host" time="2.648">
   <properties/>
-  <testcase name="corruptPreferenceFileRecoversToSafeDefaults" classname="ai.morphos.launcher.data.RepositoryTest" time="2.693"/>
-  <testcase name="personalWidgetDataIsEmptyWhenPermissionDenied" classname="ai.morphos.launcher.data.RepositoryTest" time="0.044"/>
-  <testcase name="pinsAreBoundedAndDuplicatesToggle" classname="ai.morphos.launcher.data.RepositoryTest" time="0.328"/>
-  <testcase name="themeChangeResetsOverridesButPreservesPins" classname="ai.morphos.launcher.data.RepositoryTest" time="0.076"/>
-  <testcase name="promptWidgetAndInteractiveStateSurviveRecreation" classname="ai.morphos.launcher.data.RepositoryTest" time="0.071"/>
-  <testcase name="revisionApplyUndoRedoAndStalePreviewAreAtomic" classname="ai.morphos.launcher.data.RepositoryTest" time="0.088"/>
-  <testcase name="everyOfflineThemeValidatesAndUnknownThemeFallsBack" classname="ai.morphos.launcher.data.RepositoryTest" time="0.068"/>
-  <testcase name="preferencesSurviveRepositoryRecreationAndResetIsAtomic" classname="ai.morphos.launcher.data.RepositoryTest" time="0.081"/>
-  <testcase name="personalChoiceHistoryIsPersistedAndCanBeDeleted" classname="ai.morphos.launcher.data.RepositoryTest" time="0.489"/>
+  <testcase name="corruptPreferenceFileRecoversToSafeDefaults" classname="ai.morphos.launcher.data.RepositoryTest" time="1.652"/>
+  <testcase name="personalWidgetDataIsEmptyWhenPermissionDenied" classname="ai.morphos.launcher.data.RepositoryTest" time="0.033"/>
+  <testcase name="pinsAreBoundedAndDuplicatesToggle" classname="ai.morphos.launcher.data.RepositoryTest" time="0.21"/>
+  <testcase name="themeChangeResetsOverridesButPreservesPins" classname="ai.morphos.launcher.data.RepositoryTest" time="0.049"/>
+  <testcase name="promptWidgetAndInteractiveStateSurviveRecreation" classname="ai.morphos.launcher.data.RepositoryTest" time="0.042"/>
+  <testcase name="revisionApplyUndoRedoAndStalePreviewAreAtomic" classname="ai.morphos.launcher.data.RepositoryTest" time="0.05"/>
+  <testcase name="everyOfflineThemeValidatesAndUnknownThemeFallsBack" classname="ai.morphos.launcher.data.RepositoryTest" time="0.044"/>
+  <testcase name="workspaceMigrationMovesResizeAndDockSurviveRestart" classname="ai.morphos.launcher.data.RepositoryTest" time="0.084"/>
+  <testcase name="preferencesSurviveRepositoryRecreationAndResetIsAtomic" classname="ai.morphos.launcher.data.RepositoryTest" time="0.05"/>
+  <testcase name="explicitIconProposalAndHomeRemovalUndoTogether" classname="ai.morphos.launcher.data.RepositoryTest" time="0.05"/>
+  <testcase name="personalChoiceHistoryIsPersistedAndCanBeDeleted" classname="ai.morphos.launcher.data.RepositoryTest" time="0.382"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] Internal: loaded sqlite4java from C:\Users\Ved\AppData\Local\Temp\7531102914468962669\sqlite4java.dll
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] Internal: loaded sqlite 3.8.7, wrapper 1.3
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[1]: instantiated [C:\Users\Ved\AppData\Local\Temp\robolectric-RepositoryTest_personalChoiceHistoryIsPersistedAndCanBeDeleted14253153348907414434\ai.morphos.launcher-dataDir\databases\personal.db]
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[1]: opened
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[2]: instantiated [C:\Users\Ved\AppData\Local\Temp\robolectric-RepositoryTest_personalChoiceHistoryIsPersistedAndCanBeDeleted14253153348907414434\ai.morphos.launcher-dataDir\databases\personal.db]
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[2]: opened
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[3]: instantiated [C:\Users\Ved\AppData\Local\Temp\robolectric-RepositoryTest_personalChoiceHistoryIsPersistedAndCanBeDeleted14253153348907414434\ai.morphos.launcher-dataDir\databases\personal.db]
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[3]: opened
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[4]: instantiated [C:\Users\Ved\AppData\Local\Temp\robolectric-RepositoryTest_personalChoiceHistoryIsPersistedAndCanBeDeleted14253153348907414434\ai.morphos.launcher-dataDir\databases\personal.db]
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[4]: opened
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[1]: connection closed
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[2]: connection closed
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[4]: connection closed
-Oct 12, 2026 11:23:31 AM com.almworks.sqlite4java.Internal log
-INFO: [sqlite] DB[3]: connection closed
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -23,13 +23,29 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        receiveShare(intent)
+        window.decorView.setOnDragListener { _, event ->
+            when (event.action) {
+                android.view.DragEvent.ACTION_DRAG_STARTED -> event.clipDescription?.let { it.hasMimeType("text/*") || it.hasMimeType("image/*") || it.hasMimeType("video/*") } == true
+                android.view.DragEvent.ACTION_DROP -> { requestDragAndDropPermissions(event); model.clipboard.incoming.value = event.clipData; true }
+                else -> true
+            }
+        }
         setContent { LauncherRoot(model, isDefault, homeRequest, ::requestHome, ::homeSettings) }
     }
     override fun onResume() { super.onResume(); updateRole(); model.refresh() }
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
+        receiveShare(intent)
         if (intent.hasCategory(Intent.CATEGORY_HOME)) homeRequest.value++
+    }
+    @Suppress("DEPRECATION")
+    private fun receiveShare(value: Intent?) {
+        if (value?.action !in setOf(Intent.ACTION_SEND, Intent.ACTION_SEND_MULTIPLE)) return
+        val shared = value?.clipData ?: value?.getParcelableExtra<android.net.Uri>(Intent.EXTRA_STREAM)?.let { android.content.ClipData.newUri(contentResolver, "Shared to MorphOS", it) }
+            ?: value?.getCharSequenceExtra(Intent.EXTRA_TEXT)?.let { android.content.ClipData.newPlainText("Shared to MorphOS", it) }
+        if (shared != null && shared.itemCount <= 10) model.clipboard.incoming.value = shared
     }
     private fun updateRole() {
         val roles = getSystemService(RoleManager::class.java)

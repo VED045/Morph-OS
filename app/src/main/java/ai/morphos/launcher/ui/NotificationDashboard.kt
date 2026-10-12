@@ -3,6 +3,11 @@ package ai.morphos.launcher.ui
 import ai.morphos.launcher.data.*
 import android.content.Intent
 import android.provider.Settings
+import androidx.core.graphics.drawable.toBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.ColorFilter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
@@ -30,7 +35,7 @@ import androidx.lifecycle.compose.*
         owner.lifecycle.addObserver(observer); onDispose { owner.lifecycle.removeObserver(observer) }
     }
     Column(Modifier.fillMaxSize().padding(horizontal = 20.dp)) {
-        Header("Your updates", "Local grouping · Private by default", style, back)
+        Header("Notifications", java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("EEE, d MMM")), style, back)
         if (!permitted) {
             Text("Connect your notifications", color = style.text, fontSize = 30.sp)
             Text("Android will ask you to authorize notification access. Contents stay on your phone; history is off until you enable it.", color = style.muted, modifier = Modifier.padding(vertical = 16.dp))
@@ -51,9 +56,20 @@ import androidx.lifecycle.compose.*
                     item { Text(group, color = style.muted, fontSize = 12.sp) }
                     items(entries, key = { it.key }) { card ->
                         val source = active.firstOrNull { it.card.key == card.key }?.source
-                        Surface(shape = style.shape, color = style.surface) {
+                        Surface(modifier = Modifier.animateItem(fadeInSpec = if (style.spec.reducedMotion) androidx.compose.animation.core.snap() else androidx.compose.animation.core.tween(200), placementSpec = if (style.spec.reducedMotion) androidx.compose.animation.core.snap() else androidx.compose.animation.core.spring()), shape = androidx.compose.foundation.shape.RoundedCornerShape(if (style.nothing) 18.dp else 26.dp), color = if (style.oxygen) style.bg.copy(alpha = .75f) else style.surface) {
                             Column(Modifier.fillMaxWidth().padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                Text(card.title, color = style.text); Text(card.text, color = style.muted, fontSize = 13.sp)
+                                Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                                    val notificationIcon by produceState<android.graphics.Bitmap?>(null, card.key, source) { value = withContext(Dispatchers.IO) { runCatching { source?.notification?.smallIcon?.loadDrawable(context)?.toBitmap(64,64) }.getOrNull() } }
+                                    Box(Modifier.size(30.dp).background(style.accent.copy(alpha = .15f), androidx.compose.foundation.shape.CircleShape), contentAlignment = androidx.compose.ui.Alignment.Center) {
+                                        if (notificationIcon != null) Image(notificationIcon!!.asImageBitmap(), null, Modifier.size(19.dp), colorFilter = ColorFilter.tint(style.text))
+                                        else Text(card.packageName.substringAfterLast('.').take(1).uppercase(), color = style.text, fontSize = 12.sp)
+                                    }
+                                    Spacer(Modifier.width(10.dp))
+                                    Text(card.packageName.substringAfterLast('.').replaceFirstChar { it.uppercase() }, color = style.muted, fontSize = 10.sp, modifier = Modifier.weight(1f))
+                                    Text(java.time.Instant.ofEpochMilli(card.at).atZone(java.time.ZoneId.systemDefault()).format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")), color = style.muted, fontSize = 10.sp)
+                                }
+                                Text(card.title, color = style.text, fontWeight = androidx.compose.ui.text.font.FontWeight.Medium, fontSize = 14.sp, maxLines = 2)
+                                Text(card.text, color = style.muted, fontSize = 12.sp, maxLines = 4, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                                 if (!showHistory && source != null) {
                                     Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                         if (source.notification.contentIntent != null) TextButton(onClick = { runCatching { source.notification.contentIntent.send() } }) { Text("Open") }

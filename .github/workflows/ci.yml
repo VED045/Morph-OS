@@ -28,6 +28,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements-lock.txt && pip install --no-deps .
       - run: pytest
+      - run: pip install -r ../companion/requirements.txt && python -m pytest ../companion/test_companion.py -q
   instrumentation:
     runs-on: ubuntu-latest
     strategy:

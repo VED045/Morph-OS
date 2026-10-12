@@ -5,10 +5,12 @@ from fastapi import FastAPI, Header, HTTPException, Request
 from .config import Settings
 from .design import DesignRequest, WidgetRequest, ImageDesignRequest
 from .nebius import NebiusDesigner
+from .community import community_router
 
 def create_app(settings: Settings | None = None, transport: httpx.AsyncBaseTransport | None = None) -> FastAPI:
     configuration = settings or Settings()
-    app = FastAPI(title='MorphOS design agent', version='0.2.0')
+    app = FastAPI(title='MorphOS design agent', version='0.4.0')
+    app.include_router(community_router(configuration))
     requests: list[float] = []
 
     @app.middleware('http')
@@ -27,7 +29,7 @@ def create_app(settings: Settings | None = None, transport: httpx.AsyncBaseTrans
 
     @app.get('/health')
     async def health() -> dict:
-        return {'status': 'ok', 'version': '0.2.0'}
+        return {'status': 'ok', 'version': '0.4.0'}
 
     @app.get('/capabilities')
     async def capabilities() -> dict:

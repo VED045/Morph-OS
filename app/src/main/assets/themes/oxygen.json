@@ -1,21 +1,21 @@
 {
   "schemaVersion": 2,
   "id": "oxygen",
-  "name": "Oxygen",
+  "name": "OxygenOS",
   "description": "OxygenOS-inspired balance. Calm, clean and fluid.",
   "light": {
-    "background": "#C9DFD9",
-    "surface": "#EFF5F2",
-    "foreground": "#102D2B",
-    "muted": "#456963",
-    "accent": "#245A48"
+    "background": "#182F52",
+    "surface": "#284567",
+    "foreground": "#FFFFFF",
+    "muted": "#CBD6E8",
+    "accent": "#5599FF"
   },
   "dark": {
-    "background": "#0E3035",
-    "surface": "#254A4E",
-    "foreground": "#F4FFF9",
-    "muted": "#C3DAD6",
-    "accent": "#B1F1D1"
+    "background": "#182F52",
+    "surface": "#284567",
+    "foreground": "#FFFFFF",
+    "muted": "#CBD6E8",
+    "accent": "#5599FF"
   },
   "columns": 4,
   "drawer": "GRID",
@@ -26,7 +26,7 @@
   "spacing": 16,
   "dockOpacity": 0.68,
   "gradient": true,
-  "reducedMotion": true,
+  "reducedMotion": false,
   "clockStyle": "DIGITAL",
   "homeStyle": "SHELF",
   "wallpaperStyle": "ORBS"

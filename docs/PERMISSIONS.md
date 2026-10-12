@@ -22,3 +22,11 @@ Settings exposes deletion of selection history and reset of hidden apps. Turning
 Provider keys stay in backend/.env or server environment variables. The Android client uses a separate bearer token in memory. .env, local.properties, keystores, caches and build outputs are excluded from source publication. Example/test credentials are synthetic. Live credentials are deferred.
 
 Formal security, accessibility and complete permission revocation testing remain open. See VERIFICATION.md for evidence rather than interpreting permission support as full acceptance.
+
+## On-device AI storage
+
+Import uses Android OpenDocument; no broad file permission is requested. The selected model is copied into private app storage (up to 2 GiB). Models and runtime metadata are excluded from Android backups. Delete model removes the private copy; the original selected file remains under your control. Local-only text requests use the private CPU process and exclude personal provider/history data. Explicit screenshot analysis remains a separate remote operation.
+
+## Connected clipboard and community
+
+Clipboard sync is opt-in and restricted to the focused MorphOS app on Android. Sharing/drop grants only the selected content URI; received media uses a nonexported FileProvider with per-URI grants. Pair credentials are encrypted with an Android Keystore AES-GCM key; the companion uses a paired SHA-256 certificate pin. No broad media/storage permission or clipboard background bypass is used. Community publication is an explicit upload of bounded theme JSON. Creator keys remain in screen memory.

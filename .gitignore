@@ -11,3 +11,12 @@ __pycache__/
 *.egg-info/
 *.jks
 *.keystore
+
+*.litertlm
+
+# Local community and paired-device data
+*.sqlite*
+companion/private/
+companion/.venv/
+*.pem
+pair.key

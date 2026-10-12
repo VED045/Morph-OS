@@ -58,7 +58,7 @@ object ThemeValidator {
 
 object FallbackTheme {
     val value = ThemeSpec(
-        id = "oxygen", name = "Oxygen", description = "Calm spacing. A clean, balanced home.",
+        id = "oxygen", name = "OxygenOS", description = "OnePlus-inspired home and Shelf.",
         light = Palette("#F3F5F8", "#FFFFFF", "#18202A", "#566273", "#285CBD"),
         dark = Palette("#101218", "#202631", "#F4F6FA", "#ADB7C6", "#C1F17A")
     )
@@ -80,7 +80,13 @@ data class LauncherPreferences(
     val hiddenApps: List<String> = emptyList(),
     val contactPins: List<String> = emptyList(),
     val rules: List<AutomationRule> = emptyList(),
-    val doubleTapAction: String = "controls"
+    val doubleTapAction: String = "controls",
+    val homeItems: List<HomeItem>? = null,
+    val homePages: Int = 3,
+    val dockApps: List<String> = emptyList(),
+    val workspaceCustomized: Boolean = false,
+    val iconTreatment: String = "theme",
+    val localAiMode: String = "fallback"
 )
 
 data class AppEntry(val id: String, val packageName: String, val className: String, val label: String, val category: String = "Other")

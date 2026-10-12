@@ -1,0 +1,39 @@
+{
+  "device": "API36 Android16 emulator",
+  "granted": true,
+  "testNotificationSource": "Android shell cmd notification post",
+  "notificationObserved": true,
+  "grantedUi": [
+    "Notifications",
+    "Mon, 12 Oct",
+    "Search notifications",
+    "Encrypted local history",
+    "Now",
+    "History",
+    "Delete history",
+    "android",
+    "Android",
+    "10:19",
+    "Serial console enabled",
+    "Performance is impacted. To disable, check bootloader.",
+    "com.android.shell",
+    "Shell",
+    "13:03",
+    "com.android.shell",
+    "Dismiss",
+    "Shell",
+    "13:03",
+    "MorphOS QA",
+    "Native dashboard test notification",
+    "Dismiss"
+  ],
+  "revoked": true,
+  "deniedUi": [
+    "Notifications",
+    "Mon, 12 Oct",
+    "Connect your notifications",
+    "Android will ask you to authorize notification access. Contents stay on your phone; history is off until you enable it.",
+    "Manage notification access"
+  ],
+  "safeAfterRevocation": true
+}

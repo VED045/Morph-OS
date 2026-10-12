@@ -47,13 +47,16 @@ internal fun DesignStudio(state: LauncherState, model: LauncherViewModel, style:
         Header("Design your space", "Preview → Apply → Undo", style, back)
         Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Text("A home that feels like you.", color = style.text, fontSize = 32.sp, fontWeight = FontWeight.Light)
-            Text("Describe a change. Nemotron proposes a design; you decide what lands on your home.", color = style.muted)
+            Text("Describe a change. Your selected AI proposes a design; you decide what lands on your home.", color = style.muted)
             OutlinedButton(onClick = { picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) { Text(if (image == null) "Add screenshot reference" else "Change screenshot") }
             imageError?.let { Text(it, color = style.muted) }
             if (image != null) {
-                Text("Screenshot ready. Tapping Analyze sends this image and your theme to your backend and its verified Nebius vision model. Contacts and notifications are excluded.", color = style.muted, fontSize = 12.sp)
+                Text("Reference ready. Extract colors stays on this phone. Analyze uses your selected AI route: on-phone vision, on-phone palette plus text model, or the configured Nebius vision backend.", color = style.muted, fontSize = 12.sp)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(onClick = { model.proposeReference(prompt, image!!, endpoint, token) }, enabled = !busy) { Text("Analyze & preview") }
+                    TextButton(onClick = { model.paletteReference(image!!) }, enabled = !busy) { Text("Extract colors") }
+                }
+                Row {
                     TextButton(onClick = { image = null }) { Text("Remove image") }
                 }
             }
@@ -83,7 +86,7 @@ internal fun DesignStudio(state: LauncherState, model: LauncherViewModel, style:
                         }
                     }
                     Text(result.explanation, color = style.text)
-                    Text(if (result.source == "local") "Offline command · No model call" else "Nebius Token Factory · ${result.model}", color = style.muted, fontSize = 12.sp)
+                    Text(when (result.source) { "image" -> "Local image colors · No model call"; "local" -> "Offline command · No model call"; "device" -> "On-device model · ${result.model}"; else -> "Nebius Token Factory · ${result.model}" }, color = style.muted, fontSize = 12.sp)
                     Button(onClick = model::applyProposal, enabled = result.revision == state.preferences.revision, modifier = Modifier.fillMaxWidth().testTag("apply_design")) { Text("Apply to my launcher") }
                     if (result.revision != state.preferences.revision) Text("Your layout changed. Generate a fresh preview.", color = style.muted)
                 }
@@ -92,6 +95,7 @@ internal fun DesignStudio(state: LauncherState, model: LauncherViewModel, style:
                 OutlinedButton(onClick = model::undo, enabled = state.preferences.canUndo, modifier = Modifier.testTag("undo_design")) { Text("Undo") }
                 OutlinedButton(onClick = model::redo, enabled = state.preferences.canRedo, modifier = Modifier.testTag("redo_design")) { Text("Redo") }
             }
+            LocalAiSetup(model, style, state.preferences.localAiMode)
             TextButton(onClick = { connection = !connection }) { Text("Nebius connection") }
             if (connection) {
                 Text("Model IDs and the Nebius key are configured on the backend. Enter its HTTPS URL and a separate MorphOS client token here. The token is cleared when this screen is destroyed.", color = style.muted, fontSize = 12.sp)

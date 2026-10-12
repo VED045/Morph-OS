@@ -41,6 +41,14 @@ class AppsRepository @Inject constructor(@ApplicationContext private val context
         }.getOrNull()
     }
     fun launch(app: AppEntry) = launcherApps.startMainActivity(ComponentName(app.packageName, app.className), Process.myUserHandle(), null, null)
+    suspend fun monochromeIcon(app: AppEntry): ImageBitmap? = withContext(Dispatchers.IO) {
+        if (android.os.Build.VERSION.SDK_INT < 33) return@withContext null
+        val key = app.id + ":mono"
+        cache.get(key) ?: runCatching {
+            val icon = context.packageManager.getActivityIcon(ComponentName(app.packageName, app.className)) as? android.graphics.drawable.AdaptiveIconDrawable
+            icon?.monochrome?.toBitmap(128, 128)?.asImageBitmap()?.also { cache.put(key, it) }
+        }.getOrNull()
+    }
     fun watch(callback: LauncherApps.Callback) = launcherApps.registerCallback(callback)
     fun unwatch(callback: LauncherApps.Callback) = launcherApps.unregisterCallback(callback)
     fun invalidateIcons() = cache.evictAll()

@@ -1,0 +1,42 @@
+{
+  "nativeDragAppSwap": true,
+  "persistence": true,
+  "before": {
+    "Arrange com.android.documentsui/com.android.documentsui.LauncherActivity": "[60,1125][281,1283]",
+    "Arrange com.android.gallery3d/com.android.gallery3d.app.GalleryActivity": "[307,1125][528,1283]",
+    "Arrange com.android.messaging/com.android.messaging.ui.conversationlist.ConversationListActivity": "[553,1125][774,1283]",
+    "Arrange com.android.dialer/com.android.dialer.main.impl.MainActivity": "[800,1125][1021,1283]",
+    "Arrange com.android.quicksearchbox/com.android.quicksearchbox.SearchActivity": "[60,1309][281,1467]",
+    "Arrange com.android.settings/com.android.settings.Settings": "[307,1309][528,1467]",
+    "Arrange com.android.stk/com.android.stk.StkMain": "[553,1309][774,1467]",
+    "Arrange org.chromium.webview_shell/org.chromium.webview_shell.WebViewBrowserActivity": "[800,1309][1021,1467]"
+  },
+  "after": {
+    "Arrange com.android.documentsui/com.android.documentsui.LauncherActivity": "[307,1125][528,1283]",
+    "Arrange com.android.gallery3d/com.android.gallery3d.app.GalleryActivity": "[60,1125][281,1283]",
+    "Arrange com.android.messaging/com.android.messaging.ui.conversationlist.ConversationListActivity": "[553,1125][774,1283]",
+    "Arrange com.android.dialer/com.android.dialer.main.impl.MainActivity": "[800,1125][1021,1283]",
+    "Arrange com.android.quicksearchbox/com.android.quicksearchbox.SearchActivity": "[60,1309][281,1467]",
+    "Arrange com.android.settings/com.android.settings.Settings": "[307,1309][528,1467]",
+    "Arrange com.android.stk/com.android.stk.StkMain": "[553,1309][774,1467]",
+    "Arrange org.chromium.webview_shell/org.chromium.webview_shell.WebViewBrowserActivity": "[800,1309][1021,1467]"
+  },
+  "restored": {
+    "Arrange com.android.documentsui/com.android.documentsui.LauncherActivity": "[307,1125][528,1283]",
+    "Arrange com.android.gallery3d/com.android.gallery3d.app.GalleryActivity": "[60,1125][281,1283]",
+    "Arrange com.android.messaging/com.android.messaging.ui.conversationlist.ConversationListActivity": "[553,1125][774,1283]",
+    "Arrange com.android.dialer/com.android.dialer.main.impl.MainActivity": "[800,1125][1021,1283]",
+    "Arrange com.android.quicksearchbox/com.android.quicksearchbox.SearchActivity": "[60,1309][281,1467]",
+    "Arrange com.android.settings/com.android.settings.Settings": "[307,1309][528,1467]",
+    "Arrange com.android.stk/com.android.stk.StkMain": "[553,1309][774,1467]",
+    "Arrange org.chromium.webview_shell/org.chromium.webview_shell.WebViewBrowserActivity": "[800,1309][1021,1467]"
+  },
+  "device": "API36 Android16 x86_64 emulator",
+  "visualReview": [
+    "OxygenOS home labels fit the final compact cells",
+    "Circular battery preview heading and bars fit the final shape",
+    "Nothing OS monochrome is explicitly selected for its screenshot",
+    "OxygenOS screenshots use original installed AOSP icons",
+    "Home, Shelf, drawer and gallery screenshots use Android gesture navigation"
+  ]
+}

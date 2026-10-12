@@ -1,0 +1,33 @@
+{
+  "model": "litert-community/SmolLM2-135M-Instruct",
+  "artifact": "SmolLM2_135M_Instruct.litertlm",
+  "sha256": "ccdc5c85735743f081b7d44ca309cab569f76c0f2f0e8e163449a63721969c37",
+  "runtime": "LiteRT-LM 0.13.1 CPU",
+  "device": "Android16 API36 x86_64 emulator",
+  "import": "Android OpenDocument picker success",
+  "check": "native initialization and generation succeeded",
+  "widgetPrompt": "Give a timer of three minutes",
+  "widgetResultUi": [
+    "Widget Studio",
+    "Living components \u00b7 Saved on your phone",
+    "Give a timer of three minutes",
+    "Describe a widget",
+    "Star clock",
+    "Circular battery",
+    "20 minute timer",
+    "Preview offline widget",
+    "Offline templates support the registered types. Nemotron can select a type, shape and duration from your description. Generated widgets run only registered components and actions.",
+    "Generate on this phone",
+    "Preview AI widget",
+    "Widget inference unavailable. Your existing widgets are unchanged.",
+    "On your home",
+    "Edit home to place and resize widgets. These controls change style and the widget collection order.",
+    "Local time",
+    "rounded",
+    "circle",
+    "hexagon",
+    "star",
+    "rectangle",
+    "Rotation 0\u00b0"
+  ]
+}

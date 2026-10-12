@@ -23,6 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MorphOS"
         android:usesCleartextTraffic="false">
+        <uses-native-library android:name="libvndksupport.so" android:required="false" />
+        <uses-native-library android:name="libOpenCL.so" android:required="false" />
+        <service android:name=".data.PhoneInferenceService" android:process=":local_ai" android:exported="false" />
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.shared" android:exported="false" android:grantUriPermissions="true"><meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/shared_paths" /></provider>
         <activity android:name=".MainActivity" android:exported="true"
             android:launchMode="singleTask" android:resizeableActivity="true">
             <intent-filter>
@@ -33,6 +37,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" /><data android:mimeType="image/*" /><data android:mimeType="video/*" />
             </intent-filter>
         </activity>
         <service android:name=".data.MorphNotificationListener" android:exported="true"
