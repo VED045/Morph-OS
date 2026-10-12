@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "oneui",
+  "name": "One",
+  "description": "One UI-inspired breathing room and readable cards.",
+  "light": {
+    "background": "#F3F3F8",
+    "surface": "#FFFFFF",
+    "foreground": "#202134",
+    "muted": "#5B5E73",
+    "accent": "#3848BC"
+  },
+  "dark": {
+    "background": "#13141F",
+    "surface": "#26283B",
+    "foreground": "#F4F4FF",
+    "muted": "#B1B4CC",
+    "accent": "#ADB7FF"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 32,
+  "iconRadius": 20,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 20,
+  "dockOpacity": 0.92,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "ONE",
+  "wallpaperStyle": "AURORA"
+}

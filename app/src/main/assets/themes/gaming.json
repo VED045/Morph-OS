@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "gaming",
+  "name": "Arena",
+  "description": "Gaming dashboard-inspired contrast and energy.",
+  "light": {
+    "background": "#EBF7FA",
+    "surface": "#FFFFFF",
+    "foreground": "#12323B",
+    "muted": "#4B6C73",
+    "accent": "#026B7C"
+  },
+  "dark": {
+    "background": "#071A20",
+    "surface": "#163039",
+    "foreground": "#E9FCFF",
+    "muted": "#97BDC6",
+    "accent": "#67E4EB"
+  },
+  "columns": 5,
+  "drawer": "GRID",
+  "cornerRadius": 16,
+  "iconRadius": 12,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 12,
+  "dockOpacity": 0.94,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

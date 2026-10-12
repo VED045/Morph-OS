@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://morphos.local/schemas/theme-v1",
+  "title": "MorphOS theme v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "light", "dark"],
+  "properties": {
+    "schemaVersion": {"const": 1, "default": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,39}$"},
+    "name": {"type": "string", "minLength": 1, "maxLength": 60},
+    "description": {"type": "string", "maxLength": 200},
+    "light": {"$ref": "#/$defs/palette"},
+    "dark": {"$ref": "#/$defs/palette"},
+    "columns": {"type": "integer", "minimum": 3, "maximum": 6, "default": 4},
+    "drawer": {"enum": ["GRID", "LIST"], "default": "GRID"},
+    "cornerRadius": {"type": "integer", "minimum": 0, "maximum": 40, "default": 24},
+    "iconRadius": {"type": "integer", "minimum": 0, "maximum": 28, "default": 16},
+    "monochromeIcons": {"type": "boolean", "default": false},
+    "typography": {"enum": ["sans", "mono", "serif"], "default": "sans"},
+    "spacing": {"type": "integer", "minimum": 8, "maximum": 24, "default": 16},
+    "dockOpacity": {"type": "number", "minimum": 0.2, "maximum": 1, "default": 0.85},
+    "gradient": {"type": "boolean", "default": true},
+    "reducedMotion": {"type": "boolean", "default": false}
+  },
+  "$defs": {
+    "color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+    "palette": {
+      "type": "object", "additionalProperties": false,
+      "required": ["background", "surface", "foreground", "muted", "accent"],
+      "properties": {
+        "background": {"$ref": "#/$defs/color"}, "surface": {"$ref": "#/$defs/color"},
+        "foreground": {"$ref": "#/$defs/color"}, "muted": {"$ref": "#/$defs/color"}, "accent": {"$ref": "#/$defs/color"}
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "device": "AOSP Android 16 / API 36 emulator",
+  "checks": [
+    "Counter value and running timer survive force-stop/reopen",
+    "Dot dark and Oxygen light apply and render the current widgets",
+    "Control center opens and displays real emulator device status"
+  ],
+  "cold_start_output": "Starting: Intent { cmp=ai.morphos.launcher/.MainActivity }\nStatus: ok\nLaunchState: COLD\nActivity: ai.morphos.launcher/.MainActivity\nTotalTime: 1357\nWaitTime: 1359\nComplete\n",
+  "controls_visible": [
+    "Control center",
+    "Your device, at a glance",
+    "Stay connected.",
+    "Wi-Fi",
+    "Internet panel",
+    "Bluetooth",
+    "Connection settings",
+    "100%",
+    "Battery settings",
+    "Notifications",
+    "Private dashboard",
+    "Media volume",
+    "MorphOS screen brightness",
+    "System display settings",
+    "A little quiet",
+    "Connect notification access to show media sessions.",
+    "Floating panel"
+  ]
+}

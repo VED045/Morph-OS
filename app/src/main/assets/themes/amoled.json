@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "amoled",
+  "name": "Midnight",
+  "description": "AMOLED minimal. Deep black, only the essentials.",
+  "light": {
+    "background": "#F4F4F4",
+    "surface": "#FFFFFF",
+    "foreground": "#161616",
+    "muted": "#555555",
+    "accent": "#405C28"
+  },
+  "dark": {
+    "background": "#000000",
+    "surface": "#161616",
+    "foreground": "#F5F5F5",
+    "muted": "#A8A8A8",
+    "accent": "#BFE699"
+  },
+  "columns": 3,
+  "drawer": "GRID",
+  "cornerRadius": 14,
+  "iconRadius": 26,
+  "monochromeIcons": true,
+  "typography": "sans",
+  "spacing": 24,
+  "dockOpacity": 1,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DOT",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "SOLID"
+}

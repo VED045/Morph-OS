@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "nothing",
+  "name": "Dot",
+  "description": "Nothing-inspired contrast and geometric restraint.",
+  "light": {
+    "background": "#E8E5DF",
+    "surface": "#F5F2EC",
+    "foreground": "#20201E",
+    "muted": "#62615D",
+    "accent": "#CB332E"
+  },
+  "dark": {
+    "background": "#101010",
+    "surface": "#262626",
+    "foreground": "#F5F2EC",
+    "muted": "#B3B1AC",
+    "accent": "#D93832"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 22,
+  "iconRadius": 26,
+  "monochromeIcons": true,
+  "typography": "mono",
+  "spacing": 20,
+  "dockOpacity": 0.25,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DOT",
+  "homeStyle": "GEOMETRIC",
+  "wallpaperStyle": "GRAIN"
+}

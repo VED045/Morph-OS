@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "hyper",
+  "name": "Orbit",
+  "description": "HyperOS-inspired density with rich, compact cards.",
+  "light": {
+    "background": "#EFF6FC",
+    "surface": "#FFFFFF",
+    "foreground": "#18304A",
+    "muted": "#516985",
+    "accent": "#116AA8"
+  },
+  "dark": {
+    "background": "#0D1828",
+    "surface": "#1D2C42",
+    "foreground": "#F2F7FF",
+    "muted": "#A7BAD2",
+    "accent": "#79C7FF"
+  },
+  "columns": 5,
+  "drawer": "GRID",
+  "cornerRadius": 20,
+  "iconRadius": 14,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 12,
+  "dockOpacity": 0.92,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

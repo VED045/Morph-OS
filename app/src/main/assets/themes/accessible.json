@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "accessible",
+  "name": "Reach",
+  "description": "Large, readable labels and a spacious app list.",
+  "light": {
+    "background": "#F8F6EE",
+    "surface": "#FFFFFF",
+    "foreground": "#181818",
+    "muted": "#474747",
+    "accent": "#194F9D"
+  },
+  "dark": {
+    "background": "#080F19",
+    "surface": "#1C293B",
+    "foreground": "#FFFFFF",
+    "muted": "#C2CDDA",
+    "accent": "#9AC5FF"
+  },
+  "columns": 3,
+  "drawer": "LIST",
+  "cornerRadius": 24,
+  "iconRadius": 18,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 24,
+  "dockOpacity": 1,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

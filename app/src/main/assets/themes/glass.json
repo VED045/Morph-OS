@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "glass",
+  "name": "Prism",
+  "description": "Glass-inspired layers and a cool lavender palette.",
+  "light": {
+    "background": "#F3F2FC",
+    "surface": "#FFFFFF",
+    "foreground": "#252544",
+    "muted": "#606381",
+    "accent": "#5157B5"
+  },
+  "dark": {
+    "background": "#15182A",
+    "surface": "#2C3047",
+    "foreground": "#F3F3FF",
+    "muted": "#ADB2D2",
+    "accent": "#AFBDFF"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 30,
+  "iconRadius": 18,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 18,
+  "dockOpacity": 0.62,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

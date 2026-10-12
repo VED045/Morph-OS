@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "productivity",
+  "name": "Focus",
+  "description": "Productivity-first spacing and a distraction-free list.",
+  "light": {
+    "background": "#F5F4F0",
+    "surface": "#FFFFFF",
+    "foreground": "#282B26",
+    "muted": "#60675B",
+    "accent": "#48673A"
+  },
+  "dark": {
+    "background": "#151915",
+    "surface": "#282F26",
+    "foreground": "#F4F7EF",
+    "muted": "#B5C0AC",
+    "accent": "#C1DAA4"
+  },
+  "columns": 3,
+  "drawer": "LIST",
+  "cornerRadius": 18,
+  "iconRadius": 12,
+  "monochromeIcons": true,
+  "typography": "sans",
+  "spacing": 20,
+  "dockOpacity": 1,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

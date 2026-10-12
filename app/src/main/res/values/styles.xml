@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.MorphOS" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#101218</item>
+    </style>
+</resources>

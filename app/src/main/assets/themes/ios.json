@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "ios",
+  "name": "Orchard",
+  "description": "iOS-inspired softness, rounded icons and a quiet dock.",
+  "light": {
+    "background": "#F2F2F7",
+    "surface": "#FFFFFF",
+    "foreground": "#1B1B22",
+    "muted": "#595966",
+    "accent": "#2563CB"
+  },
+  "dark": {
+    "background": "#15151C",
+    "surface": "#272733",
+    "foreground": "#F7F7FD",
+    "muted": "#AEAEBE",
+    "accent": "#99BFFF"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 26,
+  "iconRadius": 18,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 16,
+  "dockOpacity": 0.72,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "STACKED",
+  "homeStyle": "ORCHARD",
+  "wallpaperStyle": "AURORA"
+}

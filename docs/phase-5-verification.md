@@ -1,0 +1,5 @@
+# Phase 5 — local personalization
+
+Unified search covers apps, contacts after contextual READ_CONTACTS access, themes, registered widgets and supported screens. Contacts use lookup keys, nicknames/phone numbers, exact/prefix matches, pins/favorites and MorphOS-owned selection frequency with explanations. No call log/SMS access. Room stores at most 2,000 selection events; delete controls are exposed. App learning is opt-in and Usage Access is optional. Predictions consider hour distance including midnight, weekdays/weekends, frequency, recency, cold start and a confidence threshold. Suggestions can be hidden; applications never auto-open. Categories use Android application metadata, with Other for missing categories.
+
+Verified: 18 Android unit tests, 5 API 36 instrumentation tests, lint/build. Deterministic ranking datasets, Room persistence/deletion, denied contacts path and real installed Clock lookup pass. Live populated contact-provider data and authorized UsageStats import still require manual emulator/OEM checks. Sequence models, query history, feedback tuning and contextual recommendations remain backlog.

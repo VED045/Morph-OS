@@ -1,0 +1,5 @@
+# Phase 4 — guarded screenshot integration
+
+Android Photo Picker reads a selected PNG/JPEG, bounds decoding and resizes to at most 1280 pixels. Analyze explicitly sends the image and current theme through HTTPS. Backend bounds input, decodes with Pillow, strips metadata and produces a validated patch using the configured, operator-verified image-capable model. No arbitrary image URLs are accepted. Existing apps/pins/widgets are preserved.
+
+Verified: 19 backend tests including image sanitation, vision-disabled rejection and simulated image-to-patch response; Android 15 unit/4 instrumentation tests, lint and build. Picking/cancel handling is implemented; a real screenshot/model request is untested without credentials. No pixel-perfect reconstruction claim. Current reconstruction maps hierarchy/palette/spacing/icon grid/clock/home styles to supported tokens. Fine-grained component boundaries/positions and image-to-widget remain backlog. Vision acceptance is pending a live model and device upload check.

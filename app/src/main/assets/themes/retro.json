@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "retro",
+  "name": "Bit",
+  "description": "Retro pixel rhythm with original geometric styling.",
+  "light": {
+    "background": "#FFF6DE",
+    "surface": "#F6E8BC",
+    "foreground": "#372D17",
+    "muted": "#6A5C3A",
+    "accent": "#805019"
+  },
+  "dark": {
+    "background": "#18150E",
+    "surface": "#302A1A",
+    "foreground": "#FFF0C5",
+    "muted": "#C8B98F",
+    "accent": "#F1C66D"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 0,
+  "iconRadius": 0,
+  "monochromeIcons": false,
+  "typography": "mono",
+  "spacing": 16,
+  "dockOpacity": 1,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

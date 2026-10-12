@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "pixel",
+  "name": "Pebble",
+  "description": "Pixel-inspired color, simple forms and focused search.",
+  "light": {
+    "background": "#F2F5E9",
+    "surface": "#E5ECD5",
+    "foreground": "#1D2917",
+    "muted": "#526248",
+    "accent": "#356522"
+  },
+  "dark": {
+    "background": "#12180F",
+    "surface": "#263021",
+    "foreground": "#F1F5E8",
+    "muted": "#B4C4A9",
+    "accent": "#BCDDA3"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 28,
+  "iconRadius": 26,
+  "monochromeIcons": false,
+  "typography": "sans",
+  "spacing": 16,
+  "dockOpacity": 0.9,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

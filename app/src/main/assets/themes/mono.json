@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "mono",
+  "name": "Ink",
+  "description": "Minimal monochrome. A quiet canvas for your apps.",
+  "light": {
+    "background": "#F6F6F6",
+    "surface": "#E9E9E9",
+    "foreground": "#161616",
+    "muted": "#555555",
+    "accent": "#333333"
+  },
+  "dark": {
+    "background": "#101010",
+    "surface": "#242424",
+    "foreground": "#F8F8F8",
+    "muted": "#B5B5B5",
+    "accent": "#E0E0E0"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 18,
+  "iconRadius": 16,
+  "monochromeIcons": true,
+  "typography": "sans",
+  "spacing": 18,
+  "dockOpacity": 1,
+  "gradient": false,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}

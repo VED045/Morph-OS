@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "id": "neon",
+  "name": "Afterglow",
+  "description": "Cyberpunk color for a bright, electric home.",
+  "light": {
+    "background": "#F6F0FF",
+    "surface": "#FFFFFF",
+    "foreground": "#251832",
+    "muted": "#66527D",
+    "accent": "#7F2DC0"
+  },
+  "dark": {
+    "background": "#110B20",
+    "surface": "#231536",
+    "foreground": "#FAF2FF",
+    "muted": "#C2AED7",
+    "accent": "#E0A1FF"
+  },
+  "columns": 4,
+  "drawer": "GRID",
+  "cornerRadius": 12,
+  "iconRadius": 10,
+  "monochromeIcons": false,
+  "typography": "mono",
+  "spacing": 16,
+  "dockOpacity": 0.8,
+  "gradient": true,
+  "reducedMotion": true,
+  "clockStyle": "DIGITAL",
+  "homeStyle": "CALM",
+  "wallpaperStyle": "AURORA"
+}
